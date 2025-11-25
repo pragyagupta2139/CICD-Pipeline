@@ -2,12 +2,13 @@ name: Deploy Static Site
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
+    environment: env
     steps:
       - uses: actions/checkout@v4
 
@@ -19,4 +20,3 @@ jobs:
           key: ${{ secrets.DEPLOY_KEY }}
           script: |
             bash /home/azureuser/deploy.sh
-            
